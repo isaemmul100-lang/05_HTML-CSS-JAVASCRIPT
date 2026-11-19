@@ -26,6 +26,7 @@
             padding: 20px;
             border: 3px solid navy;
             background: #cfe8ff;
+            box-sizing: border-box;
         }
 
         /* ============================================================
@@ -38,6 +39,7 @@
             background: #ffe0b2;
             padding: 10px;
             box-sizing: border-box;
+            overflow: auto;
         }
 
         /* ============================================================
@@ -50,6 +52,7 @@
             color: white;
             text-align: center;
             line-height: 40px;
+            display:inline-block;
         }
 
         /* ============================================================
@@ -64,6 +67,7 @@
 
         .scroll-head {
             position: sticky;
+            top: 0;
             background: #6a1b9a;
             color: white;
             padding: 8px;
@@ -156,23 +160,23 @@
     ================================================================================
      [원인 기록란]
 
-      사례 A의 원인 :
-              실제 너비가 몇 px이 되는지 계산해서 적어보자 :
-              수정 방법 :
+      사례 A의 원인 : 300+20+3이 됨
+              실제 너비가 몇 px이 되는지 계산해서 적어보자 :320px
+              수정 방법 :box-sizing: border-box 추가
 
-      사례 B의 원인 :
-              수정 방법 :
+      사례 B의 원인 : 상자의 높이가 80px로 제한되어 있는데 내용이 많아 상자 밖으로 넘침
+              수정 방법 :overflow: auto 추가
 
-      사례 C의 원인 :
-              수정 방법 :
+      사례 C의 원인 : 기본값이 display:inline라서 크기 반영 안됨
+              수정 방법 :display:linine-block 추가
 
-      사례 D의 원인 :
-              수정 방법 :
+      사례 D의 원인 : sticky는 top/left등 위치 값을 반드시 같이 넣어야함
+              수정 방법 :top:0 추가
 
       [마지막 질문]
         사례 A 같은 문제를 프로젝트 전체에서 한 번에 막으려면
         CSS 파일 맨 위에 어떤 한 줄을 두면 될까?
-              답 :
+              답 : * { box-sizing: border-box; }
     ================================================================================
     -->
 </body>

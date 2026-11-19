@@ -45,6 +45,17 @@
            - 전체 높이 500px
 
            힌트: 나머지를 전부 차지하게 하는 단위가 있다. */
+        .dashboard {
+          display: grid;
+          grid-template-columns: 180px 1fr;
+          grid-template-rows: 60px 1fr 50px;
+          gap: 12px;
+          height: 500px;
+          grid-template-areas: 
+            "header header"
+            "sidebar main"
+            "footer footer";
+        }
 
 
         /* TODO 2. 영역 이름 붙이기 (.dashboard)
@@ -59,6 +70,10 @@
              .side -> sidebar
              .main -> main
              .foot -> footer */
+        .dashboard .head { grid-area: header; }
+        .dashboard .side { grid-area: sidebar; }
+        .dashboard .main { grid-area: main; }
+        .dashboard .foot { grid-area: footer; }
 
 
         /* TODO 3. 카드 목록 (.cards)
@@ -72,6 +87,12 @@
 
            힌트: repeat()의 첫 인자에 숫자 말고 다른 값을 넣을 수 있다.
                  두 번째 인자에는 최소/최대를 지정하는 함수를 쓴다. */
+        .cards {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+          gap: 12px;
+          margin-top: 16px;
+        }
 
 
         /* TODO 4. 모바일 대응 (미디어 쿼리)
@@ -86,6 +107,18 @@
              · 전체 높이 고정을 풀어준다. (힌트: height를 auto로)
 
            브라우저 폭을 줄여가며 확인한다. */
+        @media (max-width: 700px) {
+          .dashboard {
+            grid-template-columns: 1fr;
+            grid-template-rows: 60px auto auto 50px;
+            grid-template-areas: 
+              "header"
+              "sidebar"
+              "main"
+              "footer";
+            height: auto;
+          }
+        }
     </style>
     <title>[문제] 대시보드 레이아웃</title>
 </head>

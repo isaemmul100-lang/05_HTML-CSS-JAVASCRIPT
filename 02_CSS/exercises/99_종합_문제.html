@@ -1,14 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="99_종합_문제.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="99_종합_문제.css" />
     <title>[문제] 종합 - 자기소개 페이지 스타일링</title>
-</head>
+  </head>
 
-<!--
+  <!--
 ================================================================================
  99. 종합 - 자기소개 페이지 스타일링
 
@@ -109,15 +108,155 @@
 ================================================================================
 -->
 
-<body>
-
+  <body>
     <!-- 여기에 HTML 과정 99번에서 만든 자기소개 페이지를 붙여넣는다.
 
          CSS는 이 파일에 쓰지 않는다.
          같은 폴더에 99_종합_문제.css 파일을 만들어 거기에 작성한다.
          (이 파일 head의 link 태그가 이미 그 파일을 가리키고 있다) -->
+    <div class="dashboard">
+      <header class="head">
+        <img
+          class="profile-image"
+          src="../lecture/sample/image/woodstock.jpg"
+          alt="우드스탁 사진 입니다."
+        />
+        <div class="profile-info">
+        <h1 class="profile-name">이름</h1>
+        <p class="profile-intro">한줄소개</p>
+        </div>
+      </header>
+      <aside class="side">
+         <div>
+        <ol class="toc-list">
+          <li class="toc-item"><a class="toc-link" href="#about">소개</a></li>
+          <li class="toc-item">
+            <a class="toc-link" href="#skills">기술 스택</a>
+          </li>
+          <li class="toc-item">
+            <a class="toc-link" href="#history">학습 이력</a>
+          </li>
+          <li class="toc-item">
+            <a class="toc-link" href="#contact">연락처</a>
+          </li>
+        </ol>
+        <hr>
+        </div>
+      </aside>
+      <main class="main">
+        <h2 id="about" class="section-title">소개</h2>
+        <p class="about-text">
+          <strong class="text-strong">Lorem ipsum dolor sit amet</strong>,
+          consectetur adipisicing elit. Odio velit odit nihil debitis ullam
+          recusandae perferendis voluptatem dolorum sequi placeat.
+          <em class="text-emphasis">
+            Eum molestiae modi esse libero voluptatum magni ducimus recusandae
+            inventore.
+          </em>
+        </p>
 
+        <p class="about-text">
+          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Nostrum
+          accusamus, suscipit, minima quis nam quasi veritatis, nulla minus
+          inventore vitae quo explicabo.
+          <mark class="text-highlight">Consectetur suscipit totam aut?</mark>
+          Dolorum, labore! Nihil, maxime.
+        </p>
 
-</body>
+        <h2 id="skills" class="section-title">기술 스택</h2>
+        <dl class="skill-list">
+          <dt class="skill-name">HTML</dt>
+          <dd class="skill-description">
+            웹 페이지의 구조와 내용을 작성하는 마크업 언어
+          </dd>
 
+          <dt class="skill-name">CSS</dt>
+          <dd class="skill-description">
+            웹 페이지의 색상과 배치를 꾸미는 스타일 언어
+          </dd>
+
+          <dt class="skill-name">JavaScript</dt>
+          <dd class="skill-description">
+            웹 페이지에 동작과 상호작용을 추가하는 프로그래밍 언어
+          </dd>
+        </dl>
+
+        <h2 id="history" class="section-title">학습 이력</h2>
+        <table class="history-table" border="1">
+          <caption class="table-caption">
+            웹 개발 학습 이력
+          </caption>
+
+          <thead class="table-head">
+            <tr class="table-row">
+              <th class="table-header">기간</th>
+              <th class="table-header">학습 내용</th>
+              <th class="table-header">완료 상태</th>
+            </tr>
+          </thead>
+
+          <tbody class="table-body">
+            <tr class="table-row">
+              <th class="table-header">1주차</th>
+              <td class="table-data" rowspan="2">HTML 기초와 목록</td>
+              <td class="table-data">완료</td>
+            </tr>
+            <tr class="table-row">
+              <th class="table-header">2주차</th>
+              <td class="table-data">완료</td>
+            </tr>
+            <tr class="table-row">
+              <th class="table-header">3주차</th>
+              <td class="table-data">표와 영역 태그</td>
+              <td class="table-data">시작 전</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <h2 id="contact" class="section-title">연락처</h2>
+        <form class="contact-form" action="#" method="post">
+          <p class="form-group">
+            <label class="form-label" for="name">이름: </label>
+            <input
+              class="form-input"
+              type="text"
+              name="name"
+              id="name"
+              placeholder="이름을 입력해주세요"
+              required
+            />
+          </p>
+
+          <p class="form-group">
+            <label class="form-label" for="email">이메일: </label>
+            <input
+              class="form-input"
+              type="email"
+              name="email"
+              id="email"
+              required
+            />
+          </p>
+
+          <p class="form-group">
+            <label class="form-label" for="text">메시지: </label>
+            <textarea class="form-textarea" name="text" id="text"></textarea>
+          </p>
+
+          <p class="form-group">
+            <button class="submit-button" type="submit">보내기</button>
+          </p>
+
+          <p class="social-links">
+            <a class="github-link" href="https://github.com/" target="_blank"
+              >GitHub</a
+            >
+          </p>
+        </form>
+      </main>
+      <footer class="footer">
+        <a href="#head" class="back-to-top">맨 위로</a>
+      </footer>
+    </div>
+  </body>
 </html>

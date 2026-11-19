@@ -83,7 +83,7 @@
             position: absolute;
             top: 100px;
             left: 100px;
-            z-index: 3;
+            z-index: 1;
             /* z-index의 수치가 커질수록 화면으로 튀어나오는 방향(나머지 요소를 덮어 씀) */
         }
 
@@ -98,7 +98,7 @@
         .z-test3 {
             background: red;
             position: absolute;
-            z-index: 1;
+            z-index: 3;
         }
 
         .float-test {
@@ -123,9 +123,9 @@
         }
 
         .sticky-head {
+            /* ★ sticky는 top/left 등 위치 값을 반드시 같이 줘야 동작한다. 빠뜨리면 아무 일도 일어나지 않는다. */
             position: sticky;
             top: 0;
-            /* ★ sticky는 top/left 등 위치 값을 반드시 같이 줘야 동작한다. 빠뜨리면 아무 일도 일어나지 않는다. */
             background: #1565c0;
             color: white;
             padding: 10px;
@@ -153,8 +153,8 @@
     <p>가운데 노란 상자가 사라졌지만 빨강과 초록 사이에 <b>빈 자리가 그대로 남아 있다.</b></p>
 
     <h4>display: none — 안 보이고 자리도 차지하지 않는다</h4>
-    <pre>display: none;</pre>
     <div class="vis-test vis-test1"></div>
+    <pre>display: none;</pre>
     <div class="vis-test vis-none"></div>
     <div class="vis-test vis-test3"></div>
     <p>이번에는 빈 자리도 없어서 <b>빨강과 초록이 곧바로 붙는다.</b> 둘의 차이가 바로 이것이다.</p>
@@ -201,7 +201,7 @@
     <p><b>지금은 레이아웃 용도로 쓰지 않는다.</b> float은 원래 '글 안에 이미지를 끼워 넣어 글자가 감싸고 흐르게 하는' 용도로
         만들어진 속성인데, 가로 배치 수단이 달리 없던 시절에 레이아웃에 전용해서 쓰던 것이다.
         부모가 높이를 인식하지 못해 clear로 뒤처리를 해야 하는 등 부작용이 많다.
-        지금은 가로 배치에 flex(7-5번)나 grid(7-6번)를 쓴다.
+        <mark>지금은 가로 배치에 flex(7-5번)나 grid(7-6번)를 쓴다.</mark>
         다만 오래된 코드나 기존 프로젝트에서 자주 마주치므로, 만났을 때 알아볼 수 있을 정도로만 익혀 둔다.</p>
     <div class="float">
         <!-- div.float-test.float-test$*5 -->
