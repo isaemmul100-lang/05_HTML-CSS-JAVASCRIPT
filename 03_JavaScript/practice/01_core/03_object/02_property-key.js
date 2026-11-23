@@ -12,23 +12,26 @@
 
 // [1]
 const config = {
-    theme: 'light',
-    'font-size': 14,
-    theme: 'dark',
-    lang: 'ko',
+  theme: "light",
+  "font-size": 14,
+  theme: "dark",
+  lang: "ko",
 };
-console.log(config);   // 예상 :
-// theme 이 어떻게 되었는지 설명 :
-
+console.log(config); // 예상 : {theme:'dark','font-size':14,lang:'ko'}
+// theme 이 어떻게 되었는지 설명 :dark로 변경
 
 // [2]
 const user = {
-    // TODO
+  // TODO
+  "user-id": "u001",
+  nickname: "길동",
+  "phone number": "010-1234-5678",
 };
 
 // [3]
-const key = 'role';
+const key = "role";
 // TODO
+user.role='admin';
 
 console.log(user);
 // 기대 : { 'user-id': 'u001', nickname: '길동', 'phone number': '010-1234-5678', role: 'admin' }

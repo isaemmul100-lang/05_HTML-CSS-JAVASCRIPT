@@ -12,17 +12,26 @@
 
 // [1]
 const book = {
-    // TODO
+  // TODO
+  title: "어린왕자",
+  author: "생텍쥐페리",
+  price: 12000,
+  getInfo: function () {
+    return "『어린 왕자』 - 생텍쥐페리 (12000원)";
+  },
 };
 
 // [2]
-console.log(book);              // 예상 :
-console.log(book.getInfo);      // 예상 :
-// console.log(book.getInfo());    // 예상 :   ([1] 을 완성한 뒤 주석을 푼다)
-// 두 번째와 세 번째가 다른 이유 :
-
+console.log(book); // 예상 :book가 그대로 출력
+console.log(book.getInfo); // 예상 :[Function: getInfo]
+console.log(book.getInfo()); // 예상 : 『어린 왕자』 - 생텍쥐페리 (12000원)  ([1] 을 완성한 뒤 주석을 푼다)
+// 두 번째와 세 번째가 다른 이유 : 두번째는 getInfo가 뭔지 알려주고 세번째는 펑션 안에 있는 내용을 가져오기 때문
 
 // [3]
 // TODO : 빈 객체 movie 를 만들고 title : '인터스텔라', year : 2014 를 추가한다.
+const movie = {
+  title: "인터스텔라",
+  year: 2014,
+};
 
-// console.log(movie);   // 기대 : { title: '인터스텔라', year: 2014 }
+console.log(movie);   // 기대 : { title: '인터스텔라', year: 2014 }

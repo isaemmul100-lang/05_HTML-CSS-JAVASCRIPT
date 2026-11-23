@@ -13,34 +13,42 @@
 
 // [1]
 const dog = {
-    name: '뽀삐',
-    introduce: function () {
-        return `나는 ${this.name}`;
-    },
-    bark: function () {
-        console.log('멍멍');
-    }
+  name: "뽀삐",
+  introduce: function () {
+    return `나는 ${this.name}`;
+  },
+  bark: function () {
+    console.log("멍멍");
+  },
 };
-const cat = { name: '나비', introduce: dog.introduce };
+const cat = { name: "나비", introduce: dog.introduce };
 
-console.log(dog.introduce());       // 예상 :
-console.log(cat.introduce());       // 예상 :
-console.log(typeof dog.introduce);  // 예상 :
-console.log(dog.bark());            // 예상 : (두 줄이 출력된다)
-
+console.log(dog.introduce()); // 예상 :나는 뽀삐
+console.log(cat.introduce()); // 예상 :나는 나비
+console.log(typeof dog.introduce); // 예상 :function
+console.log(dog.bark()); // 예상 : 멍멍(두 줄이 출력된다)
 
 // [2]
 const counter = {
-    count: 0,
-    // TODO : increase, decrease, getCount
+  count: 0,
+  // TODO : increase, decrease, getCount
+  increase: function () {
+    this.count++;
+  },
+  decrease: function () {
+    this.count <= 0 ? this.count : this.count--;
+  },
+  getCount: function () {
+    return this.count;
+  },
 };
 
-// counter.increase();
-// counter.increase();
-// counter.increase();
-// counter.decrease();
-// console.log(counter.getCount());   // 기대 : 2
-// counter.decrease();
-// counter.decrease();
-// counter.decrease();
-// console.log(counter.getCount());   // 기대 : 0
+counter.increase();
+counter.increase();
+counter.increase();
+counter.decrease();
+console.log(counter.getCount());   // 기대 : 2
+counter.decrease();
+counter.decrease();
+counter.decrease();
+console.log(counter.getCount());   // 기대 : 0

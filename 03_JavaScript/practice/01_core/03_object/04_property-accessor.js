@@ -18,7 +18,7 @@ const product = {
 };
 const field = 'name';
 
-console.log(product.name);            // 예상 :
+console.log(product.name);            // 예상 :키보드
 console.log(product['name']);         // 예상 :
 console.log(product[field]);          // 예상 :
 console.log(product.field);           // 예상 :
