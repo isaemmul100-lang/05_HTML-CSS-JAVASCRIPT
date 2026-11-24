@@ -33,7 +33,85 @@
         console.log(message);
       }
 
-    </script>
+      function wait(ms, shouldFail = false) {
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            if (shouldFail) {
+              // 실패
+              reject(new Error(`${ms}ms 후 실패했다.`));
+            } else {
+              // 성공
+              resolve(`${ms}ms 후 성공했다.`);
+            }
+          }, ms);
+        });
+      }
 
+      /*
+      async와 await
+      - Promise를 동기 코드처럼 위에서 아래로 읽히게 써주는 문법
+
+      1) 함수 앞에 async를 붙인다
+      2) Promise 앞에 await를 붙여서 결과가 나올 때까지 기다렸다가 값을 꺼냄
+      3) 오류는 try/catch로 잡는다.
+      */
+
+      document.getElementById("btn1").addEventListener("click", async () => {
+        log("시작");
+
+        const r1 = await wait(500);
+        log("1단계 : " + r1);
+
+        const r2 = await wait(500);
+        log("2단계 : " + r2);
+
+        const r3 = await wait(500);
+        log("3단계 : " + r3);
+
+        log("끝");
+      });
+
+      // try/catch로 오류 처리
+      document.getElementById("btn2").addEventListener("click", async () => {
+        log("시작");
+
+        try {
+          const result = await wait(500, true);
+          log("실행되지 않음");
+        } catch (error) {
+          log("오류를 잡았다 : " + error.message);
+        } finally {
+          log("finally 항상 실행");
+        }
+
+        log("끝");
+      });
+
+      // fetch로 실제 서버 요청 보내보기
+      const API = "https://jsonplaceholder.typicode.com";
+
+      async function getUser(id) {
+        try {
+          const res = await fetch(`${API}/users/${id}`);
+
+          if (!res.ok) {
+            throw new Error(`요청실패 : ${res.status}`);
+          }
+
+          const user = await res.json(); // 응답 본문을 JSON 객체로 변경
+          log(`[${id}번] 이름 : ${user.name} / 이메일 : ${user.email}`);
+        } catch (error) {
+          log(`[${id}번] 오류를 잡음  : ${error.message}`);
+        }
+      }
+
+      document.getElementById("btn3").addEventListener("click", () => {
+        getUser(1);
+      });
+
+      document.getElementById("btn4").addEventListener("click", () => {
+        getUser(999);
+      });
+    </script>
   </body>
 </html>

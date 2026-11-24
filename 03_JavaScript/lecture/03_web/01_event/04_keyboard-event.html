@@ -27,6 +27,17 @@
             console.log(message);
         }
 
+        // keyup : 키에서 손을 뗄 때
+        // keydown : 키를 누를 때
+        // e.key : 누른 키의 이름
+        document.getElementById('keyInput').addEventListener("keydown", (e) => {
+            log(`key : ${e.key}`);
+
+            if (e.key === 'Enter') {
+                log(" -> Enter : 여기서 검색을 한다.");
+            }
+        })
+
     </script>
 
 </body>

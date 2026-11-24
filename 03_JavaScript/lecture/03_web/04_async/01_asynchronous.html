@@ -1,16 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>01_비동기</title>
     <style>
-        #log { background: #f4f4f4; padding: 10px; min-height: 120px; font-family: monospace; }
+      #log {
+        background: #f4f4f4;
+        padding: 10px;
+        min-height: 120px;
+        font-family: monospace;
+      }
     </style>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>01. 비동기</h1>
 
     <h3>1. 동기 처리</h3>
@@ -24,16 +28,33 @@
     <div id="log"></div>
 
     <script>
-        const $log = document.getElementById('log');
+      const $log = document.getElementById("log");
 
-        function log(message) {
-            const time = new Date().toLocaleTimeString('ko-KR');
-            $log.insertAdjacentHTML('beforeend', `<div>[${time}] ${message}</div>`);
-            console.log(message);
-        }
+      function log(message) {
+        const time = new Date().toLocaleTimeString("ko-KR");
+        $log.insertAdjacentHTML("beforeend", `<div>[${time}] ${message}</div>`);
+        console.log(message);
+      }
 
+      // 동기 : 앞의 일이 끝나야 다음일 진행 (순서 보장, 느리면 막힘)
+      function sleep(delay) {
+        const until = Date.now() + delay;
+        while (Date.now() < until);
+      }
+
+      document.getElementById("syncBtn").addEventListener("click", () => {
+        log("동기시작");
+        sleep(3000);
+        log("동기끝");
+      });
+
+      // 비동기 : 맡겨두고 다음 일을 한다. 막히지 않음, 실행순서가 코드 순서와 달라짐
+      document.getElementById("asyncBtn").addEventListener("click", () => {
+        log("비동기시작");
+        setTimeout(() => log("3초뒤 끝나는 일"), 3000);
+        setTimeout(() => log("1.5초뒤 끝나는 일"), 1500);
+        log("비동기끝");
+      });
     </script>
-
-</body>
-
+  </body>
 </html>

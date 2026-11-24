@@ -27,6 +27,17 @@
             console.log(message);
         }
 
+        document.getElementById('startBtn').addEventListener('click', () => {
+            // setTimeout(콜백함수, 지연시간)
+            // - 지정한 시간이 지난 뒤 콜백을 한 번 호출함
+            setTimeout(() => log('1초가 지났다.'), 1000);
+            setTimeout(() => log('3초가 지났다.'), 3000);
+
+            setTimeout(() => log('0으로 등록한 것.'), 0);
+
+            log("--- 여기까지 실행 ---")
+        })
+
     </script>
 
 </body>

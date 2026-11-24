@@ -19,6 +19,7 @@
     <div id="log"></div>
 
     <script>
+        // $ : DOM 요소가 들어있는 변수라는 표시 (관례)
         const $log = document.getElementById('log');
 
         function log(message) {
@@ -26,6 +27,34 @@
             console.log(message);
         }
 
+        /* 
+        이벤트 핸들러
+        - 특정 이벤트가 발생하면 이 함수를 호출해달라고 맡기는 함수
+        - 브라우저가 호출함
+        */
+
+        // 1. 요소찾기
+        const $btn = document.getElementById('btn');
+
+        // 2. 이벤트 등록하기
+        $btn.addEventListener('click', () => log("첫번째 핸들러"))
+        $btn.addEventListener('click', () => log("두번째 핸들러"))
+
+        function handleMouseOver() {
+            log("마우스가 올라왔습니다!")
+        }
+
+        $btn.addEventListener("mouseover", handleMouseOver);
+
+        // 옛날 방식 (한개만 등록가능 -> {}에 두개 이상 가능하지만 분리시킬 수 없음)
+        // $btn.onclick = () => {
+        //     log("첫번째 핸들러");
+        // }
+        // $btn.onclick = () => {
+        //     log("첫번째 핸들러");
+        //     log("두번째 핸들러");
+        // } // 앞에꺼가 없어지도 덮어씌어짐
+        
     </script>
 
 </body>
