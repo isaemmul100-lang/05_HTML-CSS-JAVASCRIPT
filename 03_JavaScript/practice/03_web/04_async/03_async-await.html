@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>async/await와 fetch로 결과 읽기</title>
+  <style>
+    #log { background: #f4f4f4; padding: 12px; min-height: 4em; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <!-- 문제 03. async/await와 fetch로 결과 읽기
+       유형 : 코드 작성 | 난이도 : ★★★
+
+       이 파일은 Live Server로 연다. user.json은 연습 데이터다.
+       [1] '순차 실행'을 누르면 delay(300)을 두 차례 await해서 '1단계' → '2단계'를 약 300ms 간격으로 출력한다.
+       [2] loadUser를 async 함수로 바꿔 fetch 결과를 await한다. response.ok가 false이면 상태 코드로 오류를 만든다.
+           성공 시 response.json()을 await해서 '이름 : 유관순'을 출력한다.
+       [3] try/catch로 오류를 화면에 출력하고, finally로 '요청 종료'를 항상 출력한다.
+           '없는 사용자' 버튼으로 실패를 확인한다. Live Server의 404라면 '요청 실패 : 404'가 나와야 한다.
+  -->
+
+  <h1>async/await와 fetch로 결과 읽기</h1>
+  <button type="button" id="sequence">순차 실행</button>
+  <button type="button" id="success">사용자 가져오기</button>
+  <button type="button" id="failure">없는 사용자</button>
+  <h2>실행 결과</h2>
+  <pre id="log" aria-live="polite"></pre>
+
+  <script>
+    const $log = document.getElementById("log");
+
+    function log(message) {
+      $log.textContent += message + "\n";
+    }
+
+    function delay(ms) {
+      return new Promise((resolve) => setTimeout(resolve, ms));
+    }
+
+    document.getElementById("sequence").addEventListener("click", async () => {
+      // TODO [1] await로 지연 작업 두 번 순차 실행
+    });
+
+    function loadUser(url) {
+      // TODO [2, 3] async/await로 응답을 처리하고 try/catch/finally 추가
+    }
+
+    document.getElementById("success").addEventListener("click", () => loadUser("./user.json"));
+    document.getElementById("failure").addEventListener("click", () => loadUser("./missing-user.json"));
+  </script>
+</body>
+</html>

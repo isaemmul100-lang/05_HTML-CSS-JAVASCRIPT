@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>추가된 항목도 한 곳에서 처리하기</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 12px;
+        min-height: 4em;
+        white-space: pre-wrap;
+      }
+      #menu {
+        padding: 16px 32px;
+        background: #f4f4f4;
+      }
+      .selected {
+        background: #ffe08a;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 문제 09. 추가된 항목도 한 곳에서 처리하기
+       유형 : 코드 작성 | 난이도 : ★★★
+
+       [1] 목록 ul에만 click 핸들러를 한 번 등록한다.
+           li를 클릭하면 selected 클래스를 토글하고 '아메리카노 선택' 또는 '아메리카노 해제'를 출력한다.
+           li 바깥의 목록 여백은 무시한다.
+       [2] '메뉴 추가'를 눌러 '메뉴 3'을 추가한다. 추가한 항목도 같은 방식으로 선택/해제되어야 한다.
+  -->
+
+    <h1>추가된 항목도 한 곳에서 처리하기</h1>
+    <ul id="menu">
+      <li>아메리카노</li>
+      <li>라떼</li>
+    </ul>
+    <button type="button" id="add">메뉴 추가</button>
+    <h2>실행 결과</h2>
+    <pre id="log" aria-live="polite"></pre>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.textContent += message + "\n";
+      }
+
+      const $menu = document.getElementById("menu");
+
+      document.getElementById("add").addEventListener("click", () => {
+        const $item = document.createElement("li");
+        $item.textContent = `메뉴 ${$menu.children.length + 1}`;
+        $menu.append($item);
+      });
+
+      // TODO [1] 목록에만 click 핸들러 등록
+      $menu.addEventListener("click", (e) => {
+        if (e.target.tagName !== "LI") return;
+
+        const isSelected = e.target.classList.toggle("selected"); // selected가 붙으면 true 없으면 false 반환
+        log(`${e.target.textContent} ${isSelected ? "선택" : "해제"}`);
+      });
+    </script>
+  </body>
+</html>

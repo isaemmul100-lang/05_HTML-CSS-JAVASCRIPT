@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Promise 성공과 실패 처리하기</title>
+  <style>
+    #log { background: #f4f4f4; padding: 12px; min-height: 4em; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <!-- 문제 02. Promise 성공과 실패 처리하기
+       유형 : 코드 작성 | 난이도 : ★★★
+
+       [1] runTask를 완성한다. 약 300ms 후 성공이면 이름을 resolve하고, 실패면 Error(name)으로 reject한다.
+       [2] '성공'과 '실패'를 눌렀을 때 then, catch, finally를 이용해 결과를 확인한다.
+           성공 기대 : '성공 : 저장' → '종료'
+           실패 기대 : '실패 : 저장' → '종료'
+       [3] '순차 실행'을 누르면 '1단계'와 '2단계'를 약 300ms 간격으로 출력한다.
+           첫 then에서 다음 Promise를 반환해 다음 단계가 대기하도록 한다.
+  -->
+
+  <h1>Promise 성공과 실패 처리하기</h1>
+  <button type="button" id="success">성공</button>
+  <button type="button" id="failure">실패</button>
+  <button type="button" id="chain">순차 실행</button>
+  <h2>실행 결과</h2>
+  <pre id="log" aria-live="polite"></pre>
+
+  <script>
+    const $log = document.getElementById("log");
+
+    function log(message) {
+      $log.textContent += message + "\n";
+    }
+
+    function runTask(name, shouldFail = false) {
+      // TODO [1] Promise 반환
+    }
+
+    function showResult(shouldFail) {
+      // TODO [2] runTask("저장", shouldFail) 호출 후 then/catch/finally 연결
+    }
+
+    document.getElementById("success").addEventListener("click", () => showResult(false));
+    document.getElementById("failure").addEventListener("click", () => showResult(true));
+    document.getElementById("chain").addEventListener("click", () => {
+      // TODO [3] runTask로 "1단계", "2단계"를 순서대로 처리
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>이벤트 전파 순서 예측하기</title>
+  <style>
+    #log { background: #f4f4f4; padding: 12px; min-height: 4em; white-space: pre-wrap; }
+    #outer { border: 1px solid #777; padding: 16px; }
+  </style>
+</head>
+<body>
+  <!-- 문제 07. 이벤트 전파 순서 예측하기
+       유형 : 출력 예측 + 코드 작성 | 난이도 : ★★☆
+
+       [1] 안쪽 버튼을 눌렀을 때 출력 순서를 적고 실행 결과와 비교한다.
+           예상 :안쪽 클릭 / 바깥 클릭
+       [2] 바깥 요소에 캡처 단계 click 핸들러를 하나 더 등록해 '바깥 캡처'를 출력한다.
+           다시 안쪽 버튼을 누르고 '바깥 캡처'가 몇 번째 줄에 나오는지 확인한다.
+  -->
+
+  <h1>이벤트 전파 순서 예측하기</h1>
+  <div id="outer">
+    바깥 영역
+    <button type="button" id="inner">안쪽 버튼</button>
+  </div>
+  <h2>실행 결과</h2>
+  <pre id="log" aria-live="polite"></pre>
+
+  <script>
+    const $log = document.getElementById("log");
+
+    function log(message) {
+      $log.textContent += message + "\n";
+    }
+
+    const $outer = document.getElementById("outer");
+    const $inner = document.getElementById("inner");
+
+    $outer.addEventListener("click", () => log("바깥 클릭"));
+    $inner.addEventListener("click", () => log("안쪽 클릭"));
+
+    // TODO [2] 캡처 단계 핸들러 등록
+    
+  </script>
+</body>
+</html>

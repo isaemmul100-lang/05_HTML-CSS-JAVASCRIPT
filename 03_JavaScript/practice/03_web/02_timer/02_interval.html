@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>카운트다운 만들기</title>
+  <style>
+    #log { background: #f4f4f4; padding: 12px; min-height: 4em; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <!-- 문제 02. 카운트다운 만들기
+       유형 : 코드 작성 | 난이도 : ★★☆
+
+       [1] '시작'을 누르면 3을 즉시 표시한 뒤, 약 1초마다 2, 1, 0을 표시하고 멈춘다.
+       [2] 도중에 '시작'을 여러 번 눌러도 실행 속도가 빨라지지 않아야 한다.
+       [3] '중지'를 누르면 화면의 숫자에서 멈춘다. 중지 또는 종료 후 시작하면 다시 3부터 센다.
+  -->
+
+  <h1>카운트다운 만들기</h1>
+  <button type="button" id="start">시작</button>
+  <button type="button" id="stop">중지</button>
+  <p>남은 시간 <output id="remaining">3</output>초</p>
+  <h2>실행 결과</h2>
+  <pre id="log" aria-live="polite"></pre>
+
+  <script>
+    const $log = document.getElementById("log");
+
+    function log(message) {
+      $log.textContent += message + "\n";
+    }
+
+    const $remaining = document.getElementById("remaining");
+    let intervalId = null;
+
+    function stopCountdown() {
+      // TODO [3] 반복 타이머를 해제하고 ID를 초기화
+    }
+
+    document.getElementById("start").addEventListener("click", () => {
+      // TODO [1, 2] 중복 실행을 막고 setInterval로 카운트다운
+    });
+
+    document.getElementById("stop").addEventListener("click", stopCountdown);
+  </script>
+</body>
+</html>

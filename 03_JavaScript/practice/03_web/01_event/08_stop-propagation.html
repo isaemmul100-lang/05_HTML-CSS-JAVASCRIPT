@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>자식 클릭의 전파 막기</title>
+  <style>
+    #log { background: #f4f4f4; padding: 12px; min-height: 4em; white-space: pre-wrap; }
+    #card { border: 1px solid #777; padding: 8px 16px; }
+  </style>
+</head>
+<body>
+  <!-- 문제 08. 자식 클릭의 전파 막기
+       유형 : 코드 수정 | 난이도 : ★★☆
+
+       [1] 삭제 버튼을 누르면 로그가 두 줄 나오는 이유를 적는다.
+       이유 : 이벤트 버블링 때문에 버튼만 눌러도 상위인 상세보기가 함께 출력된다.
+       [2] 삭제 버튼 핸들러를 고친다. 삭제 버튼을 누르면 '삭제 요청'만 출력하고,
+           카드 본문을 누르면 '상세 보기'를 출력해야 한다.
+  -->
+
+  <h1>자식 클릭의 전파 막기</h1>
+  <article id="card">
+    <p>할 일 카드</p>
+    <button type="button" id="remove">삭제</button>
+  </article>
+  <h2>실행 결과</h2>
+  <pre id="log" aria-live="polite"></pre>
+
+  <script>
+    const $log = document.getElementById("log");
+
+    function log(message) {
+      $log.textContent += message + "\n";
+    }
+
+    document.getElementById("card").addEventListener("click", () => {
+      log("상세 보기");
+    });
+
+    document.getElementById("remove").addEventListener("click", (event) => {
+      // TODO [2] 부모 카드까지 이벤트가 전파되지 않게 수정
+      event.stopPropagation();
+      log("삭제 요청");
+    });
+  </script>
+</body>
+</html>

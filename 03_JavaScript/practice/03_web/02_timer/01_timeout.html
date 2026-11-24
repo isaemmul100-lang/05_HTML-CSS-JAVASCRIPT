@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>지연 실행 순서와 취소</title>
+  <style>
+    #log { background: #f4f4f4; padding: 12px; min-height: 4em; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <!-- 문제 01. 지연 실행 순서와 취소
+       유형 : 출력 예측 + 코드 작성 | 난이도 : ★★☆
+
+       [1] '순서 확인'을 누르기 전에 세 줄의 출력 순서를 적고 결과와 비교한다.
+           예상 :
+       [2] '예약'을 누르면 약 1초 뒤 '알림 도착'을 한 번 출력한다.
+           대기 중에 '예약'을 다시 눌러도 알림은 한 번만 출력한다.
+       [3] 1초 안에 '취소'를 누르면 '알림 도착'이 출력되지 않는다. 취소나 실행이 끝나면 다시 예약할 수 있다.
+  -->
+
+  <h1>지연 실행 순서와 취소</h1>
+  <button type="button" id="order">순서 확인</button>
+  <button type="button" id="schedule">예약</button>
+  <button type="button" id="cancel">취소</button>
+  <h2>실행 결과</h2>
+  <pre id="log" aria-live="polite"></pre>
+
+  <script>
+    const $log = document.getElementById("log");
+
+    function log(message) {
+      $log.textContent += message + "\n";
+    }
+
+    document.getElementById("order").addEventListener("click", () => {
+      log("시작");
+      setTimeout(() => log("타이머"), 0);
+      log("끝");
+    });
+
+    let timerId = null;
+
+    // TODO [2] setTimeout으로 예약
+    // TODO [3] clearTimeout으로 취소
+  </script>
+</body>
+</html>

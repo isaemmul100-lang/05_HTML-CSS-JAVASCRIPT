@@ -1,0 +1,66 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>브라우저 기본 동작 막기</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 12px;
+        min-height: 4em;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 문제 06. 브라우저 기본 동작 막기
+       유형 : 코드 작성 | 난이도 : ★★☆
+
+       [1] 링크를 눌러도 주소 끝에 '#details'가 붙지 않게 한다. 대신 '링크를 눌렀습니다'를 출력한다.
+       [2] 검색 폼을 제출하면 기본 제출 동작을 막아 새로고침되지 않게 한다.
+           공백만 입력하면 '검색어를 입력하세요', '사과'를 입력하면 '검색 : 사과'를 출력한다.
+           검색 버튼 클릭과 Enter 입력 모두 같은 결과가 나와야 한다.
+  -->
+
+    <h1>브라우저 기본 동작 막기</h1>
+    <a id="detailsLink" href="#details">상세 정보</a>
+    <p id="details">연습용 상세 정보</p>
+    <form id="search">
+      <label>검색어 <input name="keyword" /></label>
+      <button type="submit">검색</button>
+    </form>
+    <h2>실행 결과</h2>
+    <pre id="log" aria-live="polite"></pre>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.textContent += message + "\n";
+      }
+
+      const $link = document.getElementById("detailsLink");
+      const $search = document.getElementById("search");
+
+      // TODO [1] 링크에 click 이벤트 등록
+      $link.addEventListener("click", (e) => {
+        e.preventDefault();
+        log("링크를 눌렀습니다");
+      });
+      // TODO [2] 폼에 submit 이벤트 등록
+      $search.addEventListener("submit", (e) => {
+        e.preventDefault();
+
+        const keyword = e.currentTarget.elements.keyword.value.trim();
+
+        if (!keyword) {
+          log("검색어를 입력하세요");
+          return;
+        }
+
+        log(`검색 : ${keyword}`);
+      });
+    </script>
+  </body>
+</html>

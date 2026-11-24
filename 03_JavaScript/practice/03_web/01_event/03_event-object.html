@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>이벤트 객체 읽기</title>
+  <style>
+    #log { background: #f4f4f4; padding: 12px; min-height: 4em; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <!-- 문제 03. 이벤트 객체 읽기
+       유형 : 출력 예측 + 코드 작성 | 난이도 : ★★☆
+
+       [1] 버튼 글자를 감싼 span을 눌렀을 때 target과 currentTarget의 태그 이름을 예상한다.
+           예상 :target : SPAN / currentTarget : BUTTON
+       [2] 버튼에 등록한 click 핸들러에서 두 태그 이름을 출력해 예상과 비교한다.
+           출력 형식 : target : 태그 / currentTarget : 태그
+       [3] 아래 입력창에 '서울'을 입력하면 마지막 줄에 '입력값 : 서울'이 출력되게 한다.
+  -->
+
+  <h1>이벤트 객체 읽기</h1>
+  <button id="cityButton" type="button"><span>서울</span></button>
+  <label>도시 <input id="cityInput"></label>
+  <h2>실행 결과</h2>
+  <pre id="log" aria-live="polite"></pre>
+
+  <script>
+    const $log = document.getElementById("log");
+
+    function log(message) {
+      $log.textContent += message + "\n";
+    }
+
+    const $cityButton = document.getElementById("cityButton");
+    const $cityInput = document.getElementById("cityInput");
+
+    // TODO [2] click 이벤트 객체 사용
+    $cityButton.addEventListener("click", (e)=>{
+      log(`target : ${e.target.tagName} / currentTarget : ${e.currentTarget.tagName}`)
+    })
+    // TODO [3] input 이벤트 객체 사용
+    $cityInput.addEventListener("input", (e)=>{
+      log(`입력값 : ${e.target.value}`)
+    })
+  </script>
+</body>
+</html>

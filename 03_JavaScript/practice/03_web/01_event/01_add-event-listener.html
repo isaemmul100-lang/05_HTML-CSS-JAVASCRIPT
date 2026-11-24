@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>이벤트 핸들러 등록하기</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 12px;
+        min-height: 4em;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 문제 01. 이벤트 핸들러 등록하기
+       유형 : 코드 작성 | 난이도 : ★☆☆
+
+       [1] 같은 버튼에 click 핸들러 두 개를 등록한다.
+           클릭하면 '클릭 처리'와 '기록 저장'이 한 줄씩 순서대로 출력되어야 한다.
+       [2] 같은 버튼에 mouseover 핸들러를 등록한다.
+           마우스를 버튼 위에 올리면 '마우스가 올라왔습니다'를 출력한다.
+  -->
+
+    <h1>이벤트 핸들러 등록하기</h1>
+    <button type="button" id="notify">알림 보내기</button>
+    <h2>실행 결과</h2>
+    <pre id="log" aria-live="polite"></pre>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.textContent += message + "\n";
+      }
+
+      const $notify = document.getElementById("notify");
+
+      // TODO [1] click 핸들러 두 개 등록
+      $notify.addEventListener("click", () => log("클릭 처리"));
+      $notify.addEventListener("click", () => log("기록 저장"));
+      // TODO [2] mouseover 핸들러 등록
+      $notify.addEventListener("mouseenter", () =>
+        log("마우스가 올라왔습니다."),
+      );
+    </script>
+  </body>
+</html>

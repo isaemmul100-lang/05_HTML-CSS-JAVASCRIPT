@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>동기 코드와 비동기 코드의 실행 순서</title>
+  <style>
+    #log { background: #f4f4f4; padding: 12px; min-height: 4em; white-space: pre-wrap; }
+  </style>
+</head>
+<body>
+  <!-- 문제 01. 동기 코드와 비동기 코드의 실행 순서
+       유형 : 출력 예측 + 코드 작성 | 난이도 : ★☆☆
+
+       [1] '동기 실행'과 '비동기 실행'을 각각 눌렀을 때의 출력 순서를 예상한 후 확인한다.
+           동기 예상 :
+           비동기 예상 :
+       [2] 비동기 콜백의 지연 시간을 그대로 두고, '비동기 : 끝'이 두 콜백 중 나중에 끝나는 콜백 직후에 출력되도록 고친다.
+  -->
+
+  <h1>동기 코드와 비동기 코드의 실행 순서</h1>
+  <button type="button" id="sync">동기 실행</button>
+  <button type="button" id="async">비동기 실행</button>
+  <h2>실행 결과</h2>
+  <pre id="log" aria-live="polite"></pre>
+
+  <script>
+    const $log = document.getElementById("log");
+
+    function log(message) {
+      $log.textContent += message + "\n";
+    }
+
+    document.getElementById("sync").addEventListener("click", () => {
+      log("동기 : 시작");
+      log("동기 : 작업");
+      log("동기 : 끝");
+    });
+
+    document.getElementById("async").addEventListener("click", () => {
+      log("비동기 : 시작");
+      setTimeout(() => log("비동기 : 작업 A"), 600);
+      setTimeout(() => log("비동기 : 작업 B"), 300);
+      // TODO [2] 이 로그의 위치를 수정
+      log("비동기 : 끝");
+    });
+  </script>
+</body>
+</html>

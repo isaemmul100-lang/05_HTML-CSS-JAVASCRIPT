@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>키보드 입력 처리하기</title>
+    <style>
+      #log {
+        background: #f4f4f4;
+        padding: 12px;
+        min-height: 4em;
+        white-space: pre-wrap;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 문제 04. 키보드 입력 처리하기
+       유형 : 코드 작성 | 난이도 : ★☆☆
+
+       입력창에서 keydown 이벤트가 발생하면 e.key로 어떤 키를 눌렀는지 확인한다.
+       [1] Enter를 누르면 입력값을 trim한다. 값이 있으면 '등록 : 책 읽기' 형식으로 출력하고 입력창을 비운다.
+       [2] Escape를 누르면 입력창만 비운다.
+       다른 키를 누르거나 공백만 입력하고 Enter를 누르면 등록 메시지를 출력하지 않는다.
+  -->
+
+    <h1>키보드 입력 처리하기</h1>
+    <label
+      >할 일 <input id="task" placeholder="Enter로 등록, Esc로 지우기"
+    /></label>
+    <h2>실행 결과</h2>
+    <pre id="log" aria-live="polite"></pre>
+
+    <script>
+      const $log = document.getElementById("log");
+
+      function log(message) {
+        $log.textContent += message + "\n";
+      }
+
+      const $task = document.getElementById("task");
+
+      // TODO [1, 2] keydown 이벤트 등록
+      $task.addEventListener("keydown", (e) => {
+        if (e.key === "Enter") {
+          log(`등록 : ${e.target.value}`);
+          $task.value = "";
+        }
+        if (e.key === "Escape") {
+          $task.value = "";
+        }
+      });
+    </script>
+  </body>
+</html>
