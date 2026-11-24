@@ -16,12 +16,21 @@ const user = {
 
 function changeName(user, name) {
     // TODO
+    return {...user, name};
 }
 function changeCity(user, city) {
     // TODO
+    return {
+        ...user,
+        address:{...user.address, city},
+    };
 }
 function addTag(user, tag) {
     // TODO
+    return {
+        ...user,
+        tags:[...user.tags, tag],
+    };
 }
 
 const u1 = changeName(user, '유관순');
